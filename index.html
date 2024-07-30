@@ -56,7 +56,7 @@
         <!-- Left Container -->
         <div class="container" id="leftContainer">
             <!-- Personal info subcontainer -->
-            <div class="subcontainer" id="subcontainer-1">
+            <div class="leftSubcontainer" id="subcontainer-1">
                 <p id="heading-1" class="heading">Personal info</p>
                 <p id="para-1" class="para">Please provide your name, email-address, and phone number.</p>
 
@@ -81,6 +81,57 @@
                 </form>
 
                 <div class="buttonSection">
+                    <button class="nextBtn">Next Step</button>
+                </div>
+            </div>
+
+            <!-- Select plan subcontainer -->
+            <div class="leftSubcontainer" id="subcontainer-2">
+                <p id="heading-1" class="heading">Select your plan</p>
+                <p id="para-1" class="para">You have the option of monthly or yearly billing.</p>
+
+                <div class="planContainer">
+                    <div class="plans" id="plan-1">
+                        <div class="imageSection">
+                            <img src="images/icon-arcade.svg" alt="">
+                        </div>
+                        <p class="planTitle">Arcade</p>
+                        <p class="price pricePerMonth">$9/mo</p>
+                        <p class="price pricePerYear">$90/yr</p>
+                        <p class="discount">2 months free</p>
+                    </div>
+
+                    <div class="plans" id="plan-2">
+                        <div class="imageSection">
+                            <img src="images/icon-advanced.svg" alt="">
+                        </div>
+                        <p class="planTitle">Advanced</p>
+                        <p class="price pricePerMonth">$12/mo</p>
+                        <p class="price pricePerYear">$120/yr</p>
+                        <p class="discount">2 months free</p>
+                    </div>
+
+                    <div class="plans" id="plan-3">
+                        <div class="imageSection">
+                            <img src="images/icon-pro.svg" alt="">
+                        </div>
+                        <p class="planTitle">Pro</p>
+                        <p class="price pricePerMonth">$15/mo</p>
+                        <p class="price pricePerYear">$150/yr</p>
+                        <p class="discount">2 months free</p>
+                    </div>
+                </div>
+
+                <div class="toggleBox center">
+                    <p id="toggleMonthly" class="planType choosed">Monthly</p>
+                    <div id="toggleBtn">
+                        <div id="toggleBtnInnerCircle"></div>
+                    </div>
+                    <p id="toggleYearly" class="planType notChoosed">Yearly</p>
+                </div>
+
+                <div class="buttonSection">
+                    <button class="goBackBtn">Go Back</button>
                     <button class="nextBtn">Next Step</button>
                 </div>
             </div>

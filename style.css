@@ -25,6 +25,14 @@
     justify-content: center;
 }
 
+.imageSection{
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
 body{
     background-color: var(--lightBlue);
     max-width: 1550px;
@@ -89,7 +97,7 @@ main{
     padding: 30px 70px;
     border-radius: 10px;
 
-    .subcontainer{
+    .leftSubcontainer{
         .heading{
             font-size: 30px;
             font-weight: 900;
@@ -100,7 +108,44 @@ main{
         .para{
             color: var(--coolGray);
             margin-bottom: 30px;
+        }        
+
+        .buttonSection{
+            display: flex;
+            align-items: center;
+            justify-content: right;
+            margin-top: 50px;
+
+            .goBackBtn{
+                color: var(--coolGray);
+                background-color: white;
+                border: none;
+                font-weight: 600;
+                font-size: 16px;
+                height: fit-content;
+
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+
+            .nextBtn{
+                padding: 10px 20px;
+                font-size: 16px;
+                font-weight: 600;
+                color: var(--white);
+                border: none;
+                border-radius: 5px;
+                background-color: var(--marineBlue);
+
+                &:hover{
+                    cursor: pointer;
+                }
+            }
         }
+    }
+
+    #subcontainer-1{
 
         form{
             display: flex;
@@ -135,21 +180,111 @@ main{
                 }
             }
         }
-        
+    }
+
+    #subcontainer-2{
+        display: none;
+        position: relative;
+
+        .planContainer{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+
+            .plans{
+                padding: 10px;
+                border: 1px solid var(--lightGray);
+                border-radius: 5px;
+                width: 30%;
+
+                &:hover{
+                    cursor: pointer;
+                }
+
+                .imageSection{
+                    width: 30px;
+                    aspect-ratio: 1/1;
+                    margin-bottom: 50px;
+                }
+
+                .planTitle{
+                    color: var(--marineBlue);
+                    font-weight: 500;
+                    margin-bottom: 5px;
+                }
+
+                .price,
+                .discount{
+                    font-weight: 400;
+                    font-size: 15px;
+                    color: var(--coolGray);
+                    margin-bottom: 5px;
+                }
+
+                .pricePerYear{
+                    display: none;
+                }
+                
+                .discount{
+                    display: none;
+                    color: var(--marineBlue);
+                }
+            }
+
+            #plan-1{
+                border-color: var(--marineBlue);
+                background-color: var(--Magnolia);
+            }
+        }
+
+        .toggleBox{
+            display: flex;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: var(--Magnolia);
+
+            .planType{
+                font-weight: 500;
+            }
+
+            .choosed{
+                color: var(--marineBlue);
+            }
+
+            .notChoosed{
+                color: var(--coolGray);
+            }
+
+            #toggleBtn{
+                position: relative;
+                border-radius: 20px;
+                background-color: var(--marineBlue);
+                width: 50px;
+                height: 20px;
+                margin: 0px 20px;
+
+                &:hover{
+                    cursor: pointer;
+                }
+
+                #toggleBtnInnerCircle{
+                    width: 40%;
+                    aspect-ratio: 1/1;
+                    border: 3px solid var(--marineBlue);
+                    border-radius: 50%;
+                    background-color: var(--white);
+                    position: absolute;
+                    left: 0;
+                }
+            }
+        }
 
         .buttonSection{
-            display: flex;
-            justify-content: right;;
+            justify-content: space-between;
 
-            .nextBtn{
-                margin-top: 50px;
-                padding: 10px 20px;
-                font-size: 16px;
-                font-weight: 600;
-                color: var(--white);
-                border: none;
-                border-radius: 5px;
-                background-color: var(--marineBlue);
+            .goBackBtn{
+                display: block;
             }
         }
     }

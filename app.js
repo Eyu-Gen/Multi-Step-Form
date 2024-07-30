@@ -1,16 +1,25 @@
 const sectionNumbers = document.getElementsByClassName('sectionNumbers');
 const nextBtns = document.getElementsByClassName('nextBtn');
+const goBackBtns = document.getElementsByClassName('goBackBtn');
 const errors = document.getElementsByClassName('errors');
+const subcontainers = document.getElementsByClassName('leftSubcontainer');
 const inputs = document.getElementsByTagName('input');
+const plans = document.getElementsByClassName('plans');
+const toggleBtn = document.getElementById('toggleBtn');
+const toggleBtnInnerCircle = document.getElementById('toggleBtnInnerCircle');
+const toggleMonthly = document.getElementById('toggleMonthly');
+const toggleYearly = document.getElementById('toggleYearly');
+const pricePerMonth = document.getElementsByClassName('pricePerMonth');
+const pricePerYear = document.getElementsByClassName('pricePerYear');
+const discount = document.getElementsByClassName('discount');
 let sectionNumbersCount = 0;
 
-//Line 5 to 49 are for sectionNumbers styling while clicking nextBtn or moving to next section if all conditions are satisfied...
-setBackgoundColor(); //Setting style for 1st section...
+setBackgoundColor();
 
 //Checking is input fields are empty or not...
 Array.from(nextBtns).forEach(nextBtn => {
     nextBtn.addEventListener("click", () => {
-        let isError = false; 
+        let isError = false;
         resetErrors();
         //Checking the inout fields and displayinf error if it is empty...
         Array.from(inputs).forEach(input => {
@@ -23,16 +32,72 @@ Array.from(nextBtns).forEach(nextBtn => {
         if (!isError) { //Moving to next section if there is no errors...
             sectionNumbersCount++;
             setBackgoundColor();
+            switchingSections(sectionNumbersCount);
         }
     });
 });
 
+//Moving to pre. section while clicking goBackBtn...
+Array.from(goBackBtns).forEach(goBackBtn => {
+    goBackBtn.addEventListener("click", () => {
+        sectionNumbersCount--;
+        setBackgoundColor();
+        switchingSections(sectionNumbersCount);
+    })
+})
+
+//Styling while clicking the plans...
+Array.from(plans).forEach(plan => {
+    plan.addEventListener("click", () => {
+        resetPlanClicked();
+        plan.style.borderColor = "var(--marineBlue)";
+        plan.style.backgroundColor = "var(--Magnolia)";
+    });
+});
+
+//Changing the details when toggle button is clicked...
+let isToggled = false;
+toggleBtn.addEventListener("click", () => {
+    isToggled = !isToggled;
+    toggled(isToggled);
+});
+
+
+//............................FUNCTIONS...........................//
+//Section switching...
+function switchingSections(sectionNumbersCount) {
+    switch (sectionNumbersCount) {
+        case 0:
+            subcontainers[0].style.display = "block";
+            subcontainers[1].style.display = "none";
+            break;
+        case 1:
+            subcontainers[0].style.display = "none";
+            subcontainers[1].style.display = "block";
+            subcontainers[2].style.display = "none";
+            break;
+        case 2:
+            // subcontainers[1].style.display = "none";
+            subcontainers[2].style.display = "block";
+            subcontainers[3].style.display = "none";
+            break;
+        case 3:
+            subcontainers[2].style.display = "none";
+            subcontainers[3].style.display = "block";
+            break;
+        default:
+            alert("NO SECTION ADDED!!");
+    };
+};
+
+//Hidding all errors...
 function resetErrors() {
-    for(let i = 0; i < errors.length; i++) {
+    for (let i = 0; i < errors.length; i++) {
         errors[i].style.display = "none";
     }
 }
 
+//Setting style for 1st section...
 function setBackgoundColor() {
     resetBackgoundColor(); //Reseting all style before styling the displayed section...
     sectionNumbers[sectionNumbersCount].style.backgroundColor = "var(--pastelBlue)";
@@ -42,9 +107,45 @@ function setBackgoundColor() {
 
 //Reseting style function...
 function resetBackgoundColor() {
-    for(let i = 0; i < sectionNumbers.length; i++) {
+    for (let i = 0; i < sectionNumbers.length; i++) {
         sectionNumbers[i].style.backgroundColor = "transparent";
         sectionNumbers[i].style.borderColor = "var(--white)";
         sectionNumbers[i].style.color = "var(--white)";
+    }
+}
+
+//Reseting style for all plan...
+function resetPlanClicked() {
+    for (let i = 0; i < plans.length; i++) {
+        plans[i].style.backgroundColor = "transparent";
+        plans[i].style.borderColor = "var(--lightGray)";
+    }
+}
+
+function toggled(isToggled) {
+    if (isToggled) {
+        toggleBtnInnerCircle.style.right = "0";
+        toggleBtnInnerCircle.style.left = "auto";
+        toggleMonthly.classList.add('notChoosed');
+        toggleMonthly.classList.remove('choosed');
+        toggleYearly.classList.add('choosed');
+        toggleYearly.classList.remove('notChoosed');
+        for(let i = 0; i < discount.length; i++) {
+            pricePerMonth[i].style.display = "none";
+            pricePerYear[i].style.display = "block";
+            discount[i].style.display = "block";
+        }
+    } else {
+        toggleBtnInnerCircle.style.left = "0";
+        toggleBtnInnerCircle.style.right = "auto";
+        toggleMonthly.classList.remove('notChoosed');
+        toggleMonthly.classList.add('choosed');
+        toggleYearly.classList.remove('choosed');
+        toggleYearly.classList.add('notChoosed');
+        for(let i = 0; i < discount.length; i++) {
+            pricePerMonth[i].style.display = "block";
+            pricePerYear[i].style.display = "none";
+            discount[i].style.display = "none";
+        }
     }
 }
