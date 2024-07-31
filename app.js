@@ -78,16 +78,6 @@ Array.from(options).forEach(option => {
     });
 })
 
-// document.getElementById('option-3').addEventListener('click', function(event) {
-//     // Prevent the click from triggering the checkbox twice
-//     if (event.target.tagName !== 'INPUT') {
-//         const checkbox = document.getElementById('cutomizableProfile');
-//         checkbox.checked = !checkbox.checked;
-//     }
-// });
-
-
-
 //............................FUNCTIONS...........................//
 //Section switching...
 function switchingSections(sectionNumbersCount) {
