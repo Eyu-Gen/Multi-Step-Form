@@ -12,6 +12,7 @@ const toggleYearly = document.getElementById('toggleYearly');
 const pricePerMonth = document.getElementsByClassName('pricePerMonth');
 const pricePerYear = document.getElementsByClassName('pricePerYear');
 const discount = document.getElementsByClassName('discount');
+const options = document.getElementsByClassName('options');
 let sectionNumbersCount = 0;
 
 setBackgoundColor();
@@ -62,6 +63,30 @@ toggleBtn.addEventListener("click", () => {
     toggled(isToggled);
 });
 
+//Changing the style of options when it is clicked...
+let isChecked = true;
+Array.from(options).forEach(option => {
+    option.addEventListener('click', event => {
+            const checkbox = option.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+        // Toggle the 'checked' class based on the checkbox state...
+        if (option.querySelector('input[type="checkbox"]').checked) {
+            option.classList.add('checked');
+        } else {
+            option.classList.remove('checked');
+        }
+    });
+})
+
+// document.getElementById('option-3').addEventListener('click', function(event) {
+//     // Prevent the click from triggering the checkbox twice
+//     if (event.target.tagName !== 'INPUT') {
+//         const checkbox = document.getElementById('cutomizableProfile');
+//         checkbox.checked = !checkbox.checked;
+//     }
+// });
+
+
 
 //............................FUNCTIONS...........................//
 //Section switching...
@@ -77,7 +102,7 @@ function switchingSections(sectionNumbersCount) {
             subcontainers[2].style.display = "none";
             break;
         case 2:
-            // subcontainers[1].style.display = "none";
+            subcontainers[1].style.display = "none";
             subcontainers[2].style.display = "block";
             subcontainers[3].style.display = "none";
             break;

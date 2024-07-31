@@ -48,6 +48,7 @@ main{
     background-color: var(--white);
     border-radius: 10px;
     width: 60%;
+    height: 90vh;
     font-family: var(--fontFamily);
     display: flex;
 }
@@ -98,6 +99,9 @@ main{
     border-radius: 10px;
 
     .leftSubcontainer{
+        height: 100%;
+        position: relative;
+
         .heading{
             font-size: 30px;
             font-weight: 900;
@@ -113,8 +117,12 @@ main{
         .buttonSection{
             display: flex;
             align-items: center;
-            justify-content: right;
+            justify-content: space-between;
+            position: absolute;
             margin-top: 50px;
+            bottom: 0;
+            width: 100%;
+
 
             .goBackBtn{
                 color: var(--coolGray);
@@ -143,9 +151,16 @@ main{
                 }
             }
         }
+
+        .title{
+            color: var(--marineBlue);
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
     }
 
     #subcontainer-1{
+        /* display: none; */
 
         form{
             display: flex;
@@ -180,11 +195,19 @@ main{
                 }
             }
         }
+
+        .buttonSection{
+            position: relative;
+
+            .nextBtn{
+                position: absolute;
+                right: 0;
+            }
+        }
     }
 
     #subcontainer-2{
         display: none;
-        position: relative;
 
         .planContainer{
             display: flex;
@@ -206,12 +229,6 @@ main{
                     width: 30px;
                     aspect-ratio: 1/1;
                     margin-bottom: 50px;
-                }
-
-                .planTitle{
-                    color: var(--marineBlue);
-                    font-weight: 500;
-                    margin-bottom: 5px;
                 }
 
                 .price,
@@ -281,10 +298,52 @@ main{
         }
 
         .buttonSection{
-            justify-content: space-between;
-
             .goBackBtn{
                 display: block;
+            }
+        }
+    }
+
+    #subcontainer-3{
+        display: none;
+
+        .optionContainer{
+            .options{
+                justify-content: space-between;
+                padding: 20px;
+                border-radius: 5px;
+                margin-bottom: 15px;
+                border: 1.5px solid var(--lightGray);
+                transition: border-color 0.2s linear;
+
+                &:hover{
+                    cursor: pointer;
+                    border-color: var(--purplishBlue);
+                }
+
+                label{
+                    align-items: center;
+                    
+                    input[type="checkbox"] {
+                        width: 20px;
+                        height: 20px;
+                        margin-right: 20px;
+                        accent-color: var(--purplishBlue);
+                    }
+                    
+                    .para{
+                        margin-bottom: 0;
+                    }
+                }
+
+                .optionPrice{
+                    color: var(--purplishBlue);
+                }
+            }
+
+            .checked{
+                border: 1.5px solid var(--purplishBlue);
+                background-color: var(--Magnolia);
             }
         }
     }
