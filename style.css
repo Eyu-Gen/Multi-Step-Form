@@ -33,6 +33,14 @@
     }
 }
 
+.choosed{
+    color: var(--marineBlue);
+}
+
+.notChoosed{
+    color: var(--coolGray);
+}
+
 body{
     background-color: var(--lightBlue);
     max-width: 1550px;
@@ -265,14 +273,6 @@ main{
                 font-weight: 500;
             }
 
-            .choosed{
-                color: var(--marineBlue);
-            }
-
-            .notChoosed{
-                color: var(--coolGray);
-            }
-
             #toggleBtn{
                 position: relative;
                 border-radius: 20px;
@@ -337,7 +337,14 @@ main{
                 }
 
                 .optionPrice{
-                    color: var(--purplishBlue);
+                    .monthlyPrice{
+                        color: var(--purplishBlue);
+                    }
+                    
+                    .yearlyPrice{
+                        color: var(--purplishBlue);
+                        display: none;
+                    }
                 }
             }
 

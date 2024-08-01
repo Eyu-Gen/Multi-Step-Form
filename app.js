@@ -13,6 +13,8 @@ const pricePerMonth = document.getElementsByClassName('pricePerMonth');
 const pricePerYear = document.getElementsByClassName('pricePerYear');
 const discount = document.getElementsByClassName('discount');
 const options = document.getElementsByClassName('options');
+const monthlyPrices = document.getElementsByClassName('monthlyPrice');
+const yearlyPrices = document.getElementsByClassName('yearlyPrice');
 let sectionNumbersCount = 0;
 
 setBackgoundColor();
@@ -59,6 +61,7 @@ Array.from(plans).forEach(plan => {
 //Changing the details when toggle button is clicked...
 let isToggled = false;
 toggleBtn.addEventListener("click", () => {
+    console.log(isToggled);
     isToggled = !isToggled;
     toggled(isToggled);
 });
@@ -77,6 +80,31 @@ Array.from(options).forEach(option => {
         }
     });
 })
+
+//ERROR... while toggling yearlyPrice is not displayed...
+if(isToggled){
+    console.log(isToggled);
+    console.log('IF');
+    Array.from(monthlyPrices).forEach(monthlyPrice => {
+        monthlyPrice.classList.add('notChoosed');
+        monthlyPrice.classList.remove('choosed');
+    })
+    Array.from(yearlyPrices).forEach(yearlyPrice => {
+        yearlyPrice.classList.add('chossed');
+        yearlyPrice.classList.remove('notChossed');
+    })
+} else {
+    console.log(isToggled);
+    console.log('ELSE');
+    Array.from(monthlyPrices).forEach(monthlyPrice => {
+        monthlyPrice.classList.add('choosed');
+        monthlyPrice.classList.remove('notChoosed');
+    })
+    Array.from(yearlyPrices).forEach(yearlyPrice => {
+        yearlyPrice.classList.add('notChossed');
+        yearlyPrice.classList.remove('chossed');
+    })
+}
 
 //............................FUNCTIONS...........................//
 //Section switching...
@@ -137,6 +165,7 @@ function resetPlanClicked() {
     }
 }
 
+//Price displaying when toggle btn is clicked...
 function toggled(isToggled) {
     if (isToggled) {
         toggleBtnInnerCircle.style.right = "0";
@@ -145,6 +174,7 @@ function toggled(isToggled) {
         toggleMonthly.classList.remove('choosed');
         toggleYearly.classList.add('choosed');
         toggleYearly.classList.remove('notChoosed');
+       
         for(let i = 0; i < discount.length; i++) {
             pricePerMonth[i].style.display = "none";
             pricePerYear[i].style.display = "block";
@@ -153,10 +183,11 @@ function toggled(isToggled) {
     } else {
         toggleBtnInnerCircle.style.left = "0";
         toggleBtnInnerCircle.style.right = "auto";
-        toggleMonthly.classList.remove('notChoosed');
         toggleMonthly.classList.add('choosed');
-        toggleYearly.classList.remove('choosed');
+        toggleMonthly.classList.remove('notChoosed');
         toggleYearly.classList.add('notChoosed');
+        toggleYearly.classList.remove('choosed');
+
         for(let i = 0; i < discount.length; i++) {
             pricePerMonth[i].style.display = "block";
             pricePerYear[i].style.display = "none";
