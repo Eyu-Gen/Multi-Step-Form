@@ -16,6 +16,7 @@ const options = document.getElementsByClassName('options');
 const monthlyPrices = document.getElementsByClassName('monthlyPrice');
 const yearlyPrices = document.getElementsByClassName('yearlyPrice');
 let sectionNumbersCount = 0;
+let toggleValue;
 
 setBackgoundColor();
 
@@ -61,7 +62,7 @@ Array.from(plans).forEach(plan => {
 //Changing the details when toggle button is clicked...
 let isToggled = false;
 toggleBtn.addEventListener("click", () => {
-    console.log(isToggled);
+    toggleValue = isToggled;
     isToggled = !isToggled;
     toggled(isToggled);
 });
@@ -70,8 +71,8 @@ toggleBtn.addEventListener("click", () => {
 let isChecked = true;
 Array.from(options).forEach(option => {
     option.addEventListener('click', event => {
-            const checkbox = option.querySelector('input[type="checkbox"]');
-            checkbox.checked = !checkbox.checked;
+        const checkbox = option.querySelector('input[type="checkbox"]');
+        checkbox.checked = !checkbox.checked;
         // Toggle the 'checked' class based on the checkbox state...
         if (option.querySelector('input[type="checkbox"]').checked) {
             option.classList.add('checked');
@@ -80,31 +81,6 @@ Array.from(options).forEach(option => {
         }
     });
 })
-
-//ERROR... while toggling yearlyPrice is not displayed...
-if(isToggled){
-    console.log(isToggled);
-    console.log('IF');
-    Array.from(monthlyPrices).forEach(monthlyPrice => {
-        monthlyPrice.classList.add('notChoosed');
-        monthlyPrice.classList.remove('choosed');
-    })
-    Array.from(yearlyPrices).forEach(yearlyPrice => {
-        yearlyPrice.classList.add('chossed');
-        yearlyPrice.classList.remove('notChossed');
-    })
-} else {
-    console.log(isToggled);
-    console.log('ELSE');
-    Array.from(monthlyPrices).forEach(monthlyPrice => {
-        monthlyPrice.classList.add('choosed');
-        monthlyPrice.classList.remove('notChoosed');
-    })
-    Array.from(yearlyPrices).forEach(yearlyPrice => {
-        yearlyPrice.classList.add('notChossed');
-        yearlyPrice.classList.remove('chossed');
-    })
-}
 
 //............................FUNCTIONS...........................//
 //Section switching...
@@ -174,8 +150,14 @@ function toggled(isToggled) {
         toggleMonthly.classList.remove('choosed');
         toggleYearly.classList.add('choosed');
         toggleYearly.classList.remove('notChoosed');
-       
-        for(let i = 0; i < discount.length; i++) {
+        Array.from(monthlyPrices).forEach(monthlyPrice => {
+            monthlyPrice.style.display = "none";
+        })
+        Array.from(yearlyPrices).forEach(yearlyPrice => {
+            yearlyPrice.style.display = "block";
+        })
+
+        for (let i = 0; i < discount.length; i++) {
             pricePerMonth[i].style.display = "none";
             pricePerYear[i].style.display = "block";
             discount[i].style.display = "block";
@@ -187,8 +169,14 @@ function toggled(isToggled) {
         toggleMonthly.classList.remove('notChoosed');
         toggleYearly.classList.add('notChoosed');
         toggleYearly.classList.remove('choosed');
+        Array.from(monthlyPrices).forEach(monthlyPrice => {
+            monthlyPrice.style.display = "block";
+        })
+        Array.from(yearlyPrices).forEach(yearlyPrice => {
+            yearlyPrice.style.display = 'none';
+        })
 
-        for(let i = 0; i < discount.length; i++) {
+        for (let i = 0; i < discount.length; i++) {
             pricePerMonth[i].style.display = "block";
             pricePerYear[i].style.display = "none";
             discount[i].style.display = "none";
