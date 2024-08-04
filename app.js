@@ -15,10 +15,58 @@ const discount = document.getElementsByClassName('discount');
 const options = document.getElementsByClassName('options');
 const monthlyPrices = document.getElementsByClassName('monthlyPrice');
 const yearlyPrices = document.getElementsByClassName('yearlyPrice');
+const clickedPlans = document.getElementsByClassName('clickedPlan');
+const choosedPlanTitle = document.getElementById('choosedPlanTitle');
+const totalPrice = document.getElementById('totalPrice');
 let sectionNumbersCount = 0;
-let toggleValue;
+let toggleValue = false;
+let planTitle;
+let planPrice;
 
 setBackgoundColor();
+
+//Moving to pre. section while clicking goBackBtn...
+Array.from(goBackBtns).forEach(goBackBtn => {
+    goBackBtn.addEventListener("click", () => {
+        sectionNumbersCount--;
+        setBackgoundColor();
+        switchingSections(sectionNumbersCount);
+    })
+})
+
+//Changing the details when toggle button is clicked...
+let isToggled = false;
+toggleBtn.addEventListener("click", () => {
+    isToggled = !isToggled;
+    toggled(isToggled);
+    toggleValue = isToggled;
+});
+
+//Styling while clicking the plans...
+Array.from(plans).forEach(plan => {
+    plan.addEventListener("click", () => {
+        resetPlanClicked();
+        plan.classList.add('clickedPlan');
+        plan.classList.remove('notClickedPlan');
+        assigningValue(); //ERROR HERE..
+    });
+});
+
+
+//Changing the style of options when it is clicked...
+let isChecked = true;
+Array.from(options).forEach(option => {
+    option.addEventListener('click', event => {
+        const checkbox = option.querySelector('input[type="checkbox"]');
+        checkbox.checked = !checkbox.checked;
+        // Toggle the 'checked' class based on the checkbox state...
+        if (option.querySelector('input[type="checkbox"]').checked) {
+            option.classList.add('checked');
+        } else {
+            option.classList.remove('checked');
+        }
+    });
+})
 
 //Checking is input fields are empty or not...
 Array.from(nextBtns).forEach(nextBtn => {
@@ -38,49 +86,15 @@ Array.from(nextBtns).forEach(nextBtn => {
             setBackgoundColor();
             switchingSections(sectionNumbersCount);
         }
-    });
-});
-
-//Moving to pre. section while clicking goBackBtn...
-Array.from(goBackBtns).forEach(goBackBtn => {
-    goBackBtn.addEventListener("click", () => {
-        sectionNumbersCount--;
-        setBackgoundColor();
-        switchingSections(sectionNumbersCount);
-    })
-})
-
-//Styling while clicking the plans...
-Array.from(plans).forEach(plan => {
-    plan.addEventListener("click", () => {
-        resetPlanClicked();
-        plan.style.borderColor = "var(--marineBlue)";
-        plan.style.backgroundColor = "var(--Magnolia)";
-    });
-});
-
-//Changing the details when toggle button is clicked...
-let isToggled = false;
-toggleBtn.addEventListener("click", () => {
-    toggleValue = isToggled;
-    isToggled = !isToggled;
-    toggled(isToggled);
-});
-
-//Changing the style of options when it is clicked...
-let isChecked = true;
-Array.from(options).forEach(option => {
-    option.addEventListener('click', event => {
-        const checkbox = option.querySelector('input[type="checkbox"]');
-        checkbox.checked = !checkbox.checked;
-        // Toggle the 'checked' class based on the checkbox state...
-        if (option.querySelector('input[type="checkbox"]').checked) {
-            option.classList.add('checked');
-        } else {
-            option.classList.remove('checked');
+        
+        if(Array.from(nextBtns).indexOf(nextBtn) === 2) {
+            // PRICE SUMMARY DISPLAYING HERE...
+            choosedPlanTitle.textContent = planTitle;
+            totalPrice.textContent = planPrice;
         }
     });
-})
+
+});
 
 //............................FUNCTIONS...........................//
 //Section switching...
@@ -136,8 +150,8 @@ function resetBackgoundColor() {
 //Reseting style for all plan...
 function resetPlanClicked() {
     for (let i = 0; i < plans.length; i++) {
-        plans[i].style.backgroundColor = "transparent";
-        plans[i].style.borderColor = "var(--lightGray)";
+        plans[i].classList.add('notClickedPlan');
+        plans[i].classList.remove('clickedPlan');
     }
 }
 
@@ -183,3 +197,15 @@ function toggled(isToggled) {
         }
     }
 }
+
+function assigningValue() {
+    Array.from(clickedPlans).forEach(clickedPlan => {
+        planTitle = clickedPlan.querySelector(".title").textContent;
+        if(toggleValue){
+            planPrice = clickedPlan.querySelector(".pricePerYear").textContent;
+        } else {
+            planPrice = clickedPlan.querySelector(".pricePerMonth").textContent;
+        }
+    })
+}
+

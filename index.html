@@ -91,7 +91,7 @@
                 <p id="para-1" class="para">You have the option of monthly or yearly billing.</p>
 
                 <div class="planContainer">
-                    <div class="plans" id="plan-1">
+                    <div class="plans clickedPlan" id="plan-1">
                         <div class="imageSection">
                             <img src="images/icon-arcade.svg" alt="">
                         </div>
@@ -199,14 +199,31 @@
                 <!-- INCOMPLETE -->
 
                 <div class="priceContainer">
-                    <div class="priceSummary">
-                        <div class="choosedPlan summaryBox">
-                            <div class="summaryDetails"></div>
+                    <div class="choosedPlan">
+                        <div class="planRightContainer">
+                            <div class="summaryDetails title" id="choosedPlanTitle">TITLE</div>
                             <p class="changeBtn">change</p>
                         </div> 
+                        <div id="totalPrice">0</div>
                     </div>
-                    <div class="totalPrice"></div>
-                </div>                
+                    <hr>
+                    <!-- Should be displayed like This -->
+                    <!-- <div class="priceSummary">
+                        <div class="summaryBox center">
+                            <div class="choosedAddOns">option 1</div>
+                            <div class="addOnsPrice">10</div>
+                        </div>
+                        <div class="summaryBox center">
+                            <div class="choosedAddOns">option 1</div>
+                            <div class="addOnsPrice">10</div>
+                        </div>
+                    </div> -->
+                </div>           
+                
+                <div class="overallPrice center">
+                    <div class="totalTitle">Total ( <span id="overallTitle">hihi</span> )</div>
+                    <div id="overallPrice">10</div>
+                </div>
 
                 <div class="buttonSection">
                     <button class="goBackBtn">Go Back</button>

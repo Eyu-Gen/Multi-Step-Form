@@ -169,7 +169,7 @@ main{
     }
 
     #subcontainer-1{
-        display: none;
+        /* display: none; */
 
         form{
             display: flex;
@@ -258,9 +258,14 @@ main{
                 }
             }
 
-            #plan-1{
+            .clickedPlan{
                 border-color: var(--marineBlue);
                 background-color: var(--Magnolia);
+            }
+
+            .notClickedPlan{
+                background-color: transparent;
+                border-color: var(--lightGray);
             }
         }
 
@@ -357,6 +362,62 @@ main{
     }
 
     #subcontainer-4{
+        display: none;
 
+        .priceContainer{     
+            background-color: var(--Magnolia);
+            border-radius: 5px;
+            padding: 20px;
+            
+            .choosedPlan{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                
+                #totalPrice{
+                    font-weight: 500;
+                    color: var(--marineBlue);
+                    font-size: 18px;
+                }
+                
+                .changeBtn{
+                    color: var(--coolGray);
+                    text-decoration: underline;
+                }
+            }
+            
+            hr{
+                margin-top: 20px;
+                border: 1px solid var(--lightGray);
+            }
+
+            .summaryBox{
+                margin-top: 20px;
+                justify-content: space-between;
+
+                .choosedAddOns{
+                    color: var(--coolGray);
+                }
+
+                .addOnsPrice{
+                    color: var(--marineBlue);
+                }
+            }
+        }
+
+        .overallPrice{
+            padding: 20px;
+            justify-content: space-between;
+
+            .totalTitle{
+                color: var(--coolGray);
+            }
+
+            #overallPrice{
+                color: var(--purplishBlue);
+                font-size: 20px;
+                font-weight: 500;
+            }
+        }
     }
 }
