@@ -18,6 +18,7 @@ const yearlyPrices = document.getElementsByClassName('yearlyPrice');
 const clickedPlans = document.getElementsByClassName('clickedPlan');
 const choosedPlanTitle = document.getElementById('choosedPlanTitle');
 const totalPrice = document.getElementById('totalPrice');
+const priceSummary = document.getElementById('priceSummary');
 let sectionNumbersCount = 0;
 let toggleValue = false;
 let planTitle;
@@ -48,8 +49,9 @@ Array.from(plans).forEach(plan => {
         resetPlanClicked();
         plan.classList.add('clickedPlan');
         plan.classList.remove('notClickedPlan');
-        assigningValue(); //ERROR HERE..
+        assigningValue();
     });
+    assigningValue();
 });
 
 
@@ -68,12 +70,12 @@ Array.from(options).forEach(option => {
     });
 })
 
-//Checking is input fields are empty or not...
+//Checking if input fields are empty or not...
 Array.from(nextBtns).forEach(nextBtn => {
     nextBtn.addEventListener("click", () => {
         let isError = false;
         resetErrors();
-        //Checking the inout fields and displayinf error if it is empty...
+        //Checking the input fields and displaying error if it is empty...
         Array.from(inputs).forEach(input => {
             if (input.value.length === 0) {
                 const index = Array.from(inputs).indexOf(input);
@@ -91,6 +93,25 @@ Array.from(nextBtns).forEach(nextBtn => {
             // PRICE SUMMARY DISPLAYING HERE...
             choosedPlanTitle.textContent = planTitle;
             totalPrice.textContent = planPrice;
+
+            //Options summary displaying here...
+           const optionChecked = document.getElementsByClassName("checked");
+
+           for(let i = 0; i < optionChecked.length; i++) {
+                //Creating the parent div to display chooosed add ons options...
+                let summaryBox = document.createElement("div");
+                summaryBox.classList.add("center", "sumarryBox");
+                priceSummary.appendChild(summaryBox);
+
+                //Creating the child to display the title of the choosed option...
+                let choosedAddOns = document.createElement("div");
+                choosedAddOns.classList.add("choosedAddOns");
+                choosedAddOns.setAttribute("id", `choosedAddOns${i}`);
+                // choosedAddOns[i].textContent = optionChecked[i].textContent;
+                // console.log(choosedAddOns[i]);
+                // console.log(optionChecked[i].getElementsByClassName("title").textContent); HEREEEEEEEEEEEEEE....
+
+           }
         }
     });
 
@@ -198,6 +219,7 @@ function toggled(isToggled) {
     }
 }
 
+//Displaying the choosed plan title and price
 function assigningValue() {
     Array.from(clickedPlans).forEach(clickedPlan => {
         planTitle = clickedPlan.querySelector(".title").textContent;

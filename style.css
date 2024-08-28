@@ -380,8 +380,10 @@ main{
                     font-size: 18px;
                 }
                 
-                .changeBtn{
+                #changeBtn{
                     color: var(--coolGray);
+                    border: none;
+                    background-color: transparent;
                     text-decoration: underline;
                 }
             }
