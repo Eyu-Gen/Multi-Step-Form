@@ -88,30 +88,59 @@ Array.from(nextBtns).forEach(nextBtn => {
             setBackgoundColor();
             switchingSections(sectionNumbersCount);
         }
-        
-        if(Array.from(nextBtns).indexOf(nextBtn) === 2) {
+
+        if (Array.from(nextBtns).indexOf(nextBtn) === 2) {
             // PRICE SUMMARY DISPLAYING HERE...
+            assigningValue();
             choosedPlanTitle.textContent = planTitle;
             totalPrice.textContent = planPrice;
 
-            //Options summary displaying here...
-           const optionChecked = document.getElementsByClassName("checked");
+            // Options summary displaying here...
+            const optionChecked = document.getElementsByClassName("checked");
+            priceSummary.innerHTML= '';
 
-           for(let i = 0; i < optionChecked.length; i++) {
-                //Creating the parent div to display chooosed add ons options...
+            for (let i = 0; i < optionChecked.length; i++) {
+                // Creating the parent div to display chosen add-ons options...
                 let summaryBox = document.createElement("div");
-                summaryBox.classList.add("center", "sumarryBox");
+                summaryBox.classList.add("center", "summaryBox");
                 priceSummary.appendChild(summaryBox);
 
-                //Creating the child to display the title of the choosed option...
+                // Creating the child to display the title of the chosen option...
                 let choosedAddOns = document.createElement("div");
                 choosedAddOns.classList.add("choosedAddOns");
                 choosedAddOns.setAttribute("id", `choosedAddOns${i}`);
-                // choosedAddOns[i].textContent = optionChecked[i].textContent;
-                // console.log(choosedAddOns[i]);
-                // console.log(optionChecked[i].getElementsByClassName("title").textContent); HEREEEEEEEEEEEEEE....
 
-           }
+                // Getting the text content of the <p> element with class "title"
+                const optionTitle = optionChecked[i].querySelector(".title").textContent;
+
+                // Setting the text content of choosedAddOns directly
+                choosedAddOns.textContent = optionTitle;
+
+                // Appending choosedAddOns to summaryBox
+                summaryBox.appendChild(choosedAddOns);
+
+                // Creating the child to display the price of the chosen option...
+                let addOnsPrice = document.createElement("div");
+                addOnsPrice.classList.add("addOnsPrice");
+                addOnsPrice.setAttribute("id", `addOnsPrice${i}`);
+
+                // Declaring optionPrice variable outside the if-else blocks
+                let optionPrice;
+
+                if (!isToggled) {
+                    // Getting the text content of the <p> element with class "monthlyPrice"
+                    optionPrice = optionChecked[i].querySelector(".monthlyPrice").textContent;
+                } else {
+                    // Getting the text content of the <p> element with class "yearlyPrice"
+                    optionPrice = optionChecked[i].querySelector(".yearlyPrice").textContent;
+                }
+
+                // Setting the text content of addOnsPrice directly
+                addOnsPrice.textContent = optionPrice;
+
+                // Appending addOnsPrice to summaryBox
+                summaryBox.appendChild(addOnsPrice);
+            }
         }
     });
 
@@ -223,7 +252,7 @@ function toggled(isToggled) {
 function assigningValue() {
     Array.from(clickedPlans).forEach(clickedPlan => {
         planTitle = clickedPlan.querySelector(".title").textContent;
-        if(toggleValue){
+        if (toggleValue) {
             planPrice = clickedPlan.querySelector(".pricePerYear").textContent;
         } else {
             planPrice = clickedPlan.querySelector(".pricePerMonth").textContent;
