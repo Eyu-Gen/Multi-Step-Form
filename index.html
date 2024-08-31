@@ -57,7 +57,8 @@
         <div class="container" id="leftContainer">
             <!-- Personal info subcontainer -->
             <div class="leftSubcontainer" id="subcontainer-1">
-                <p id="heading-1" class="heading">Personal info</p>
+                <div class="wrapper">
+                    <p id="heading-1" class="heading">Personal info</p>
                 <p id="para-1" class="para">Please provide your name, email-address, and phone number.</p>
 
                 <form>
@@ -79,6 +80,7 @@
                     </div>
                     <input type="text" id="phoneNumber" placeholder="e.g. +977 12 3456 7890">
                 </form>
+                </div>
 
                 <div class="buttonSection">
                     <button class="nextBtn">Next Step</button>
@@ -87,49 +89,52 @@
 
             <!-- Select plan subcontainer -->
             <div class="leftSubcontainer" id="subcontainer-2">
-                <p id="heading-2" class="heading">Select your plan</p>
-                <p id="para-2" class="para">You have the option of monthly or yearly billing.</p>
-
-                <div class="planContainer">
-                    <div class="plans clickedPlan" id="plan-1">
-                        <div class="imageSection">
-                            <img src="images/icon-arcade.svg" alt="">
+                <div class="wrapper">
+                    <p id="heading-2" class="heading">Select your plan</p>
+                    <p id="para-2" class="para">You have the option of monthly or yearly billing.</p>
+    
+                    <div class="planContainer">
+                        <div class="plans clickedPlan" id="plan-1">
+                            <div class="imageSection">
+                                <img src="images/icon-arcade.svg" alt="">
+                            </div>
+                            <p class="title">Arcade</p>
+                            <p class="price pricePerMonth">$9/mo</p>
+                            <p class="price pricePerYear">$90/yr</p>
+                            <p class="discount">2 months free</p>
                         </div>
-                        <p class="title">Arcade</p>
-                        <p class="price pricePerMonth">$9/mo</p>
-                        <p class="price pricePerYear">$90/yr</p>
-                        <p class="discount">2 months free</p>
-                    </div>
-
-                    <div class="plans" id="plan-2">
-                        <div class="imageSection">
-                            <img src="images/icon-advanced.svg" alt="">
+    
+                        <div class="plans" id="plan-2">
+                            <div class="imageSection">
+                                <img src="images/icon-advanced.svg" alt="">
+                            </div>
+                            <p class="title">Advanced</p>
+                            <p class="price pricePerMonth">$12/mo</p>
+                            <p class="price pricePerYear">$120/yr</p>
+                            <p class="discount">2 months free</p>
                         </div>
-                        <p class="title">Advanced</p>
-                        <p class="price pricePerMonth">$12/mo</p>
-                        <p class="price pricePerYear">$120/yr</p>
-                        <p class="discount">2 months free</p>
-                    </div>
-
-                    <div class="plans" id="plan-3">
-                        <div class="imageSection">
-                            <img src="images/icon-pro.svg" alt="">
+    
+                        <div class="plans" id="plan-3">
+                            <div class="imageSection">
+                                <img src="images/icon-pro.svg" alt="">
+                            </div>
+                            <p class="title">Pro</p>
+                            <p class="price pricePerMonth">$15/mo</p>
+                            <p class="price pricePerYear">$150/yr</p>
+                            <p class="discount">2 months free</p>
                         </div>
-                        <p class="title">Pro</p>
-                        <p class="price pricePerMonth">$15/mo</p>
-                        <p class="price pricePerYear">$150/yr</p>
-                        <p class="discount">2 months free</p>
                     </div>
+    
+                    <div class="toggleBox center">
+                        <p id="toggleMonthly" class="planType choosed">Monthly</p>
+                        <div id="toggleBtn">
+                            <div id="toggleBtnInnerCircle"></div>
+                        </div>
+                        <p id="toggleYearly" class="planType notChoosed">Yearly</p>
+                    </div>
+    
                 </div>
-
-                <div class="toggleBox center">
-                    <p id="toggleMonthly" class="planType choosed">Monthly</p>
-                    <div id="toggleBtn">
-                        <div id="toggleBtnInnerCircle"></div>
-                    </div>
-                    <p id="toggleYearly" class="planType notChoosed">Yearly</p>
-                </div>
-
+                
                 <div class="buttonSection">
                     <button class="goBackBtn">Go Back</button>
                     <button class="nextBtn">Next Step</button>
@@ -138,53 +143,55 @@
 
             <!-- Add ons subcontainer -->
             <div class="leftSubcontainer" id="subcontainer-3">
-                <p id="heading-3" class="heading">Select your plan</p>
-                <p id="para-3" class="para">You have the option of monthly or yearly billing.</p>
-
-                <div class="optionContainer">
-                    <div class="options center checked" id="option-1">
-                        <label class="center" for="onlineService">
-                            <input type="checkbox" class="option" id="onlineService" value="onlineService" checked>
-                            <div class="optionDetails">
-                                <p class="title">Online Service</p>
-                                <p class="para">Access to multiplayer games</p>
+                <div class="wrapper">
+                    <p id="heading-3" class="heading">Select your plan</p>
+                    <p id="para-3" class="para">You have the option of monthly or yearly billing.</p>
+    
+                    <div class="optionContainer">
+                        <div class="options center checked" id="option-1">
+                            <label class="center" for="onlineService">
+                                <input type="checkbox" class="option" id="onlineService" value="onlineService" checked>
+                                <div class="optionDetails">
+                                    <p class="title">Online Service</p>
+                                    <p class="para">Access to multiplayer games</p>
+                                </div>
+                            </label>
+                            <div class="optionPrice">
+                                <p class="monthlyPrice choosed">+$1/mo</p>
+                                <p class="yearlyPrice choosed">+$10/yr</p>
                             </div>
-                        </label>
-                        <div class="optionPrice">
-                            <p class="monthlyPrice choosed">+$1/mo</p>
-                            <p class="yearlyPrice choosed">+$10/yr</p>
                         </div>
-                    </div>
-
-                    <div class="options center checked" id="option-2">
-                        <label class="center" for="largerStorage">
-                            <input type="checkbox" class="option" id="largerStorage" value="largerStorage" checked>
-                            <div class="optionDetails">
-                                <p class="title">Larger Storage</p>
-                                <p class="para">Extra 1TB of cloud save</p>
+    
+                        <div class="options center checked" id="option-2">
+                            <label class="center" for="largerStorage">
+                                <input type="checkbox" class="option" id="largerStorage" value="largerStorage" checked>
+                                <div class="optionDetails">
+                                    <p class="title">Larger Storage</p>
+                                    <p class="para">Extra 1TB of cloud save</p>
+                                </div>
+                            </label>
+                            <div class="optionPrice">
+                                <p class="monthlyPrice choosed">+$2/mo</p>
+                                <p class="yearlyPrice choosed">+$20/yr</p>
                             </div>
-                        </label>
-                        <div class="optionPrice">
-                            <p class="monthlyPrice choosed">+$2/mo</p>
-                            <p class="yearlyPrice choosed">+$20/yr</p>
                         </div>
-                    </div>
-
-                    <div class="options center" id="option-3">
-                        <label class="center" for="cutomizableProfile">
-                            <input type="checkbox" class="option" id="cutomizableProfile" value="cutomizableProfile">
-                            <div class="optionDetails">
-                                <p class="title">Cutomizable Profile</p>
-                                <p class="para">Custome theme on your profile</p>
+    
+                        <div class="options center" id="option-3">
+                            <label class="center" for="cutomizableProfile">
+                                <input type="checkbox" class="option" id="cutomizableProfile" value="cutomizableProfile">
+                                <div class="optionDetails">
+                                    <p class="title">Cutomizable Profile</p>
+                                    <p class="para">Custome theme on your profile</p>
+                                </div>
+                            </label>
+                            <div class="optionPrice">
+                                <p class="monthlyPrice choosed">+$2/mo</p>
+                                <p class="yearlyPrice choosed">+$20/yr</p>
                             </div>
-                        </label>
-                        <div class="optionPrice">
-                            <p class="monthlyPrice choosed">+$2/mo</p>
-                            <p class="yearlyPrice choosed">+$20/yr</p>
                         </div>
-                    </div>
+                    </div>    
                 </div>
-
+                
                 <div class="buttonSection">
                     <button class="goBackBtn">Go Back</button>
                     <button class="nextBtn">Next Step</button>
@@ -193,26 +200,28 @@
 
             <!-- Summary subcontainer -->
             <div class="leftSubcontainer" id="subcontainer-4">
-                <p id="heading-4" class="heading">Finishing up</p>
-                <p id="para-4" class="para">Double-check everything looks OK before confirming</p>
-
-                <div class="priceContainer">
-                    <div class="choosedPlan">
-                        <div class="planRightContainer">
-                            <div class="summaryDetails title" id="choosedPlanTitle">TITLE</div>
-                            <button id="changeBtn">change</button>
-                        </div> 
-                        <div id="totalPrice">0</div>
-                    </div>
-                    <hr>
-                    <div id="priceSummary"></div>
-                </div>           
-                
-                <div class="overallPrice center">
-                    <div class="totalTitle">Total ( <span id="overallTitle"></span> )</div>
-                    <div id="overallPrice"></div>
+                <div class="wrapper">
+                    <p id="heading-4" class="heading">Finishing up</p>
+                    <p id="para-4" class="para">Double-check everything looks OK before confirming</p>
+    
+                    <div class="priceContainer">
+                        <div class="choosedPlan">
+                            <div class="planRightContainer">
+                                <div class="summaryDetails title" id="choosedPlanTitle">TITLE</div>
+                                <button id="changeBtn">change</button>
+                            </div> 
+                            <div id="totalPrice">0</div>
+                        </div>
+                        <hr>
+                        <div id="priceSummary"></div>
+                    </div>           
+                    
+                    <div class="overallPrice center">
+                        <div class="totalTitle">Total ( <span id="overallTitle"></span> )</div>
+                        <div id="overallPrice"></div>
+                    </div>    
                 </div>
-
+                
                 <div class="buttonSection">
                     <button class="goBackBtn">Go Back</button>
                     <button id="confirmBtn">Confirm</button>
