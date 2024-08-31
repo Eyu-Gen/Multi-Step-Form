@@ -145,7 +145,7 @@ main{
                 }
             }
 
-            .confirmBtn,
+            #confirmBtn,
             .nextBtn{
                 padding: 10px 20px;
                 font-size: 16px;
@@ -420,6 +420,23 @@ main{
                 font-size: 20px;
                 font-weight: 500;
             }
+        }
+    }
+
+    #subcontainer-5{
+        display: none;
+        flex-direction: column;
+        
+        .imageSection{
+            width: 20%;
+            aspect-ratio: 1/1;
+            margin-bottom: 30px;
+        }
+        
+        .thanksPara{
+            width: 90%;
+            text-align: center;
+            margin-top: 10px;
         }
     }
 }

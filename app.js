@@ -19,6 +19,8 @@ const clickedPlans = document.getElementsByClassName('clickedPlan');
 const choosedPlanTitle = document.getElementById('choosedPlanTitle');
 const totalPrice = document.getElementById('totalPrice');
 const priceSummary = document.getElementById('priceSummary');
+const changeBtn = document.getElementById("changeBtn");
+const confirmBtn = document.getElementById("confirmBtn");
 let sectionNumbersCount = 0;
 let toggleValue = false;
 let planTitle;
@@ -53,7 +55,6 @@ Array.from(plans).forEach(plan => {
     });
     assigningValue();
 });
-
 
 //Changing the style of options when it is clicked...
 let isChecked = true;
@@ -93,7 +94,9 @@ Array.from(nextBtns).forEach(nextBtn => {
             // PRICE SUMMARY DISPLAYING HERE...
             assigningValue();
             choosedPlanTitle.textContent = planTitle;
+            const optionPriceNums = [];
             totalPrice.textContent = planPrice;
+            optionPriceNums[0] = planPrice;
 
             // Options summary displaying here...
             const optionChecked = document.getElementsByClassName("checked");
@@ -137,14 +140,50 @@ Array.from(nextBtns).forEach(nextBtn => {
 
                 // Setting the text content of addOnsPrice directly
                 addOnsPrice.textContent = optionPrice;
+                optionPriceNums[i+1] = optionPrice;
 
                 // Appending addOnsPrice to summaryBox
                 summaryBox.appendChild(addOnsPrice);
+            }
+
+            //Toatl per month/year...
+            const total = document.getElementById("overallTitle");
+            if(!isToggled){
+                total.textContent = "per month";
+            } else {
+                total.textContent = "per year";
+            }
+
+            //Calculating the yotal price...
+            let sum = 0;
+            Array.from(optionPriceNums).forEach(optionPriceNum => {
+                optionPriceNum = Number(optionPriceNum.replace(/\D/g, ''));
+                sum += optionPriceNum;
+            })
+
+            if(!isToggled) {
+                document.getElementById("overallPrice").textContent = `+$${sum}/mo`;
+            } else {
+                document.getElementById("overallPrice").textContent = `+$${sum}/yr`;
             }
         }
     });
 
 });
+
+//Redirecting to "plans container" when change btn is clicked...
+changeBtn.addEventListener("click", () => {
+    sectionNumbersCount = 1;
+    setBackgoundColor();
+    switchingSections(sectionNumbersCount);
+    subcontainers[3].style.display = "none";
+})
+
+//Thankyou page when confirmBtn is clicked...
+confirmBtn.addEventListener("click", () => {
+    subcontainers[3].style.display = "none";
+    subcontainers[4].style.display = "flex";
+})
 
 //............................FUNCTIONS...........................//
 //Section switching...
